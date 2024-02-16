@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-int	check_path(char **parsed_map, t_map *map)
+int	check_path(t_map *map)
 {
 	t_position queue[map.rows * map.cols];
 	t_position current;
@@ -14,14 +14,14 @@ int	check_path(char **parsed_map, t_map *map)
 	while(front_rear[0] != front_rear[1])
 	{
 		current = queue[front_rear[0]++];
-		if (parsed_map[current.y][current.x] == 'E')
+		if (map.parsed_map[current.y][current.x] == 'E')
 			return (0);
 		ft_explore(map, visited, front_rear, current, queue);
 	}
 	return (1);
 }
 
-int	check_walls(char **map)
+int	check_walls(t_map *map)
 {
 	size_t	line_length;
 	size_t	line_count;
@@ -30,21 +30,21 @@ int	check_walls(char **map)
 
 	i = 0;
 	j = 0;
-	line_count = ft_line_count(map); // hacer estas dos fts
-	line_length = ft_line_length(*map);
-	while (map[i])
+	(*map).rows = rows(map); 
+	(*map).cols = columns(map);
+	while ((*map).parsed_map[i])
 	{
-		if (i == 0 || i == line_count)
+		if (i == 0 || i == (*map).rows)
 		{
-			while (map[i][j++])
-				if (map[i][j] != '1')
+			while ((*map).parsed_map[i][j++])
+				if ((*map).parsed_map[i][j] != '1')
 					return (1);
 		}
 		else
 		{
-			while (map[i][j++])
-				if (j == 0 || j == line_length)
-					if (map[i][j] != '1')
+			while ((*map).parsed_map[i][j++])
+				if (j == 0 || j == (*map).cols)
+					if ((*map).parsed_map[i][j] != '1')
 						return (1);
 		}
 		j = 0;
@@ -53,7 +53,7 @@ int	check_walls(char **map)
 	return (0);
 }
 
-int	check_rectangular(char **map)
+int	check_rectangular(t_map map)
 {
 	size_t	line_length;
 	size_t	i;
@@ -61,15 +61,12 @@ int	check_rectangular(char **map)
 
 	i = 0;
 	j = 0;
-	while (map[0][j])
-		j++;
-	line_length = j;
-	while (map[i])
+	while (map.parsed_map[i])
 	{
 		j = 0;
-		while (map[i][j])
+		while (map.parsed_map[i][j])
 			j++;
-		if (j != line_length)
+		if (j != map.cols)
 			return (1)
 		i++;
 	}
@@ -78,48 +75,54 @@ int	check_rectangular(char **map)
 	return (0);
 }
 
-int	check_ex_coll_pos(char **map)
+int	check_ex_coll_pos(t_map *map)
 {
-	size_t	i;
-	size_t	j;
-	int	checks[3];
+	int	i;
+	int	j;
+	int	check;
 
 	i = 0;
 	j = 0;
-	while (map[i])
+	while ((*map).parsed_map[i])
 	{
-		while (map[i][j])
+		while ((*map).parsed_map[i][j])
 		{
-			if (map[i][j] == 'P')
-				checks[0] == 1;
-			else if (map[i][j] == 'C')
-				checks[1] == 1;
-			else if (map[i][j] == 'E')
-				checks[2] == 1;
+			if ((*map).parsed_map[i][j] == 'P')
+				{
+					(*map).start_pos.x = j;
+					(*map).start_pos.y = i;
+				}
+			else if ((*map).parsed_map[i][j] == 'C')
+				checks == 1;
+			else if ((*map).parsed_map[i][j] == 'E')
+				{
+					(*map).exit_pos.x = j;
+					(*map).exit_pos.y = i;
+				}
 			j++;
 		}
 		j = 0;
 		i++;
 	}
-	if (checks[0] && checks[1] && checks[2])
+	if (check && (*map).start_pos.x && (*map).exit_pos.x)
 		return (0);
 	else 
 		return (1);
 }
 
-int	check_characters(char **map)
+int	check_characters(t_map map)
 {
 	size_t	i;
 	size_t	j;
 
 	i = 0;
 	j = 0;
-	while (map[i])
+	while (map.parsed_map[i])
 	{
-		while (map[i][j])
+		while (map.parsed_map[i][j])
 		{
-			if (map[i][j] != '1' || map[i][j] != '0' || map[i][j] != 'E'
-				|| map[i][j] != 'C' || map[i][j] != 'P')
+			if (map.parsed_map[i][j] != '1' || map.parsed_map[i][j] != '0' || map.parsed_map[i][j] != 'E'
+				|| map.parsed_map[i][j] != 'C' || map.parsed_map[i][j] != 'P')
 					return (1);
 			j++;
 		}

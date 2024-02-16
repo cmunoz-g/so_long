@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-void	ft_explore(t_map *map, int visited[map.rows][map.cols], int front_rear[2], t_position current, t_position *queue)
+void	ft_explore(t_map map, int visited[map.rows][map.cols], int front_rear[2], t_position current, t_position *queue)
 {
 	size_t i;
 	int	directions[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
@@ -23,7 +23,7 @@ void	ft_explore(t_map *map, int visited[map.rows][map.cols], int front_rear[2], 
 	}
 }
 
-int	valid_point(int x, int y, t_map *map)
+int	valid_point(int x, int y, t_map map)
 {
 	return (map.parsed_map[y][x] != '1' && (x >= 0 && x < map.cols) && (y >= 0 && y < map.rows))
 }
