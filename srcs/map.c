@@ -8,15 +8,17 @@
 		// rodeado de muros (1's)
 		// camino valido (seguir un rastro de 0 o C hasta la E) aqui si es un rastro solo de 0 es valido, o debes coger un C???
 
-void	check_map(char **file)
+void	check_map(char **parsed_map)
 {
-	if (!check_ex_coll_pos(file))
+	if (check_characters(parsed_map)) // si tiene algo que no sea E, C, P, 1 o 
+		error("The map has invalid characters");
+	if (check_ex_coll_pos(parsed_mape))
 		error("The map is missing an exit, collectable, or initial position");
-	if (!check_rectangular(file))
+	if (check_rectangular(parsed_map))
 		error("The map is not rectangular");
-	if (!check_walls(file))
+	if (check_walls(parsed_map))
 		error("The map is not enclosed");
-	if (!check_path(file))
+	if (check_path(parsed_map))
 		error("There is no path to exit the map");
 }
 
@@ -36,6 +38,6 @@ void	ft_map(char *file, t_map *map)
 		ft_strjoin(line, buffer);
 		free(buffer);
 	}
-	map->file = ft_split(line, '\n');
-	check_map(map->file); // pensar si mandar el struct tmb, necesitare guardar la longitud de las lineas, posicion inicial y demas? si es asi, enviar para hacer mas eficiente
+	map->parsed_map = ft_split(line, '\n');
+	check_map(map->parsed_map); // pensar si mandar el struct tmb, necesitare guardar la longitud de las lineas, posicion inicial y demas? si es asi, enviar para hacer mas eficiente
 }

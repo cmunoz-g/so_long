@@ -10,6 +10,7 @@ int	main(int argc, char *argv[])
 	if (argc != 2)
 		error("There must be two arguments");
 	ft_map(argv[1], map);
-
+	printf("Exito!\n");
+	exit(0);
 
 }
