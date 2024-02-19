@@ -15,11 +15,11 @@ void	check_map(t_map map)
 		error("The map has invalid characters");
 	if (check_ex_coll_pos(&map))
 		error("The map is missing an exit, collectable, or initial position");
-	if (check_rectangular(map))
+	if (check_rectangular(&map))
 		error("The map is not rectangular");
-	if (check_walls(&map))
+	if (check_walls(map))
 		error("The map is not enclosed");
-	if (check_path(map)) // quiza haya que modificar esto tmb para que tenga en cuenta la posibilidad de que el pj no pueda coger ningun C
+	if (check_path(&map)) // quiza haya que modificar esto tmb para que tenga en cuenta la posibilidad de que el pj no pueda coger ningun C
 		error("There is no path to exit the map");
 }
 
@@ -33,13 +33,13 @@ void	ft_map(char *file, t_map map)
 	if (fd == -1)
 		error("Could not open the file");
 	buffer = get_next_line(fd); // aqui estoy alocando memoria para la linea, y dentro del while tmb con el join, mirar bien donde debo liberarla // CREO QUE YA BIEN 
+	line = ft_strdup(buffer);
 	while (buffer)
 	{
+		line = ft_strjoin(line, buffer);
 		buffer = get_next_line(fd);
-		ft_strjoin(line, buffer);
-		free(buffer);
 	}
 	map.parsed_map = ft_split(line, '\n');
 	free(line);
-	check_map(map); // pensar si mandar el struct tmb, necesitare guardar la longitud de las lineas, posicion inicial y demas? si es asi, enviar para hacer mas eficiente
+	check_map(map); 
 }

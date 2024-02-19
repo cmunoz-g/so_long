@@ -4,7 +4,7 @@ CFLAGS = -Wall -Werror -Wextra
 INCLUDE = inc/
 FOLDER = srcs/
 OBJFOLDER = obj/
-SRCS = main.c pipex.c utils.c
+SRCS = main.c checks.c error.c get_next_line.c get_next_line_utils.c map.c queue.c utils.c ft_split.c
 OBJS = $(SRCS:%.c=$(OBJFOLDER)%.o)
 
 $(OBJFOLDER)%.o: $(FOLDER)%.c 

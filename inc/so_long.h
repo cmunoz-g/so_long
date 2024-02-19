@@ -8,6 +8,8 @@
 # include <unistd.h>
 # include <fcntl.h>
 
+# define BUFFER_SIZE 42 // comprobar si puedo usar esto, sino hardcodearlo en la gnl
+
 typedef	struct	s_position
 {
 	int	x;
@@ -24,6 +26,35 @@ typedef struct	s_map
 
 }				t_map;
 
+int	main(int argc, char *argv[]);
+int	check_path(t_map *map);
+int	check_walls(t_map map);
+int	check_rectangular(t_map *map);
+int	check_ex_coll_pos(t_map *map);
+int	check_characters(t_map map);
+int	valid_point(int x, int y, t_map map);
+int rows(t_map *map);
+int	columns(t_map *map);
 
+size_t	ft_strlen(const char *str);
+size_t	ft_strlcat(char *dest, const char *src, size_t destsize);
+
+void	ft_map(char *file, t_map map);
+void	check_map(t_map map);
+void	error(char *error_msg);
+void	auxfill(size_t len, size_t llsize, char *buff, char *long_line);
+void	ft_explore(t_map *map, int visited[map->rows][map->cols], int front_rear[2], t_position current, t_position *queue);
+void	init_visited(t_map *map, int visited[map->rows][map->cols]);
+void    *ft_memset(void *str, int c, size_t n);
+
+char	*get_next_line(int fd);
+char	*ft_strchr(const char *str, int c);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_read(int fd, char *long_line, char *buffer);
+char	*ft_linefill(char *long_line);
+char	*restline(char *long_line, char *line);
+char	*ft_strdup(const char *s);
+
+char	**ft_split(char const *s, char c);
 
 #endif

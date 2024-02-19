@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmunoz-g <cmunoz-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: camunozg <camunozg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:12:41 by cmunoz-g          #+#    #+#             */
-/*   Updated: 2024/01/12 13:04:43 by cmunoz-g         ###   ########.fr       */
+/*   Updated: 2024/02/19 09:48:37 by camunozg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "so_long.h"
 
 size_t	ft_strlcat(char *dest, const char *src, size_t destsize)
 {
