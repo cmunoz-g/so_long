@@ -19,7 +19,7 @@ void	check_map(t_map map)
 		error("The map is not rectangular");
 	if (check_walls(map))
 		error("The map is not enclosed");
-	if (check_path(&map)) // quiza haya que modificar esto tmb para que tenga en cuenta la posibilidad de que el pj no pueda coger ningun C
+	if (check_path(&map)) 
 		error("There is no path to exit the map");
 }
 

@@ -21,6 +21,7 @@ typedef struct	s_map
 	char		**parsed_map;
 	t_position	exit_pos;
 	t_position	start_pos;
+	t_position	item_pos;
 	int			rows; // cuantas lineas en el char **
 	int			cols; // cuantos caracteres en cada linea
 
