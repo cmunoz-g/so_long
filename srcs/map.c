@@ -9,7 +9,7 @@
 		// rodeado de muros (1's)
 		// camino valido (seguir un rastro de 0 o C hasta la E) aqui si es un rastro solo de 0 es valido, o debes coger un C???
 
-void	check_map(t_map map)
+void	check_map(t_map map) // TENGO QUE COMPROBAR SI LA SALIDA ESTA EN UN MURO?????? Y SI HAY MAS DE 2 SALIDAS?
 {
 	if (check_characters(map)) 
 		error("The map has invalid characters");
