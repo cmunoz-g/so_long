@@ -33,7 +33,9 @@ int	check_walls(t_map map);
 int	check_rectangular(t_map *map);
 int	check_ex_coll_pos(t_map *map);
 int	check_characters(t_map map);
+int	check_file_extension(char *file);
 int	valid_point(int x, int y, t_map map);
+int ft_strncmp(const char *str1, const char *str2, size_t n);
 int rows(t_map *map);
 int	columns(t_map *map);
 

@@ -145,3 +145,14 @@ int	check_characters(t_map map)
 	}
 	return (0);
 }
+
+int	check_file_extension(char *file)
+{
+	size_t	i;
+	
+	i = ft_strlen(file);
+	if (ft_strncmp((file + i - 4), ".ber", 4))
+		return (1);
+	else
+		return (0);
+}

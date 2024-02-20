@@ -20,7 +20,7 @@ void	check_map(t_map map) // TENGO QUE COMPROBAR SI LA SALIDA ESTA EN UN MURO???
 	if (check_walls(map))
 		error("The map is not enclosed");
 	if (check_path(&map, 'C')) 
-		error("The character cannot get to a collectable");
+		error("The character cannot get to a collectable");  // ver si es necesario que recoja todos los collectables???
 	if (check_path(&map, 'E')) 
 		error("There is no path to exit the map");
 }
