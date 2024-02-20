@@ -28,7 +28,7 @@ typedef struct	s_map
 }				t_map;
 
 int	main(int argc, char *argv[]);
-int	check_path(t_map *map);
+int	check_path(t_map *map, char to_find);
 int	check_walls(t_map map);
 int	check_rectangular(t_map *map);
 int	check_ex_coll_pos(t_map *map);

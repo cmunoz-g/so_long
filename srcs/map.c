@@ -19,7 +19,9 @@ void	check_map(t_map map) // TENGO QUE COMPROBAR SI LA SALIDA ESTA EN UN MURO???
 		error("The map is not rectangular");
 	if (check_walls(map))
 		error("The map is not enclosed");
-	if (check_path(&map)) 
+	if (check_path(&map, 'C')) 
+		error("The character cannot get to a collectable");
+	if (check_path(&map, 'E')) 
 		error("There is no path to exit the map");
 }
 

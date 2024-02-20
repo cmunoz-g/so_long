@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-int	check_path(t_map *map)
+int	check_path(t_map *map, char to_find)
 {
 	t_position queue[map->rows * map->cols];
 	t_position current;
@@ -9,14 +9,24 @@ int	check_path(t_map *map)
 
 	front_rear[0] = 0;
 	front_rear[1] = 0;
-	queue[front_rear[0]] = map->start_pos;
+	if (to_find == 'C')
+		queue[front_rear[0]] = map->start_pos;
+	else
+		queue[front_rear[0]] = map->item_pos;
 	current = queue[front_rear[1]++];
 	init_visited(map, visited);
-	visited[map->start_pos.y][map->start_pos.x] = 1;
+	if (to_find == 'C')
+		visited[map->start_pos.y][map->start_pos.x] = 1;
+	else
+		visited[map->item_pos.y][map->item_pos.x] = 1;
 	while(front_rear[0] < front_rear[1])
 	{
-		if (map->parsed_map[current.y][current.x] == 'E')
+		if (map->parsed_map[current.y][current.x] == to_find)
+		{
+			if (to_find == 'C')
+				map->item_pos = current;
 			return (0);
+		}
 		ft_explore(map, visited, front_rear, current, queue);
 		current = queue[++front_rear[0]];
 	}
