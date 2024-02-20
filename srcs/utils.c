@@ -57,3 +57,16 @@ int ft_strncmp(const char *str1, const char *str2, size_t n)
         i++;
     return ((unsigned char)str1[i] - (unsigned char)str2[i]);
 }
+
+void	ft_free(t_map map)
+{
+	size_t	i;
+	
+	i = 0;
+	while (map.parsed_map[i])
+	{
+		free(map.parsed_map[i]);
+		i++;
+	}
+	free(map.parsed_map);
+}

@@ -1,33 +1,36 @@
+
+// Hay que revisarlo en base al de Linux
+
+
 NAME = so_long
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address
-LDFLAGS = -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra
 INCLUDE = inc/
 FOLDER = srcs/
 OBJFOLDER = obj/
 SRCS = main.c checks.c error.c get_next_line.c get_next_line_utils.c map.c queue.c utils.c ft_split.c
 OBJS = $(SRCS:%.c=$(OBJFOLDER)%.o)
 
-MLX = mlx/libmlx_Linux.a 
-PATHMLX = mlx/
-MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
+MINILIBX = mlx/libmlx.a 
+PATHMINILIBX = mlx/
+MLX_FLAGS = -Lmlx -lmlx -L/usr/X11/lib -lXext -lX11 -framework OpenGL -framework AppKit
 
 $(OBJFOLDER)%.o: $(FOLDER)%.c 
 	@mkdir -p $(OBJFOLDER)
-	$(CC) $(CFLAGS) -I$(INCLUDE) -I$(PATHMLX) -c $< -o $@
+	$(CC) $(CFLAGS) -I$(INCLUDE) $(MINILIBX) $(MLX_FLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-	@make -C $(PATHMLX)
-	$(CC) -o $(NAME) $(OBJS) $(MLX) $(MLX_FLAGS) $(LDFLAGS)
+	@make -C $(PATHMINILIBX)
+	$(CC) -o $(NAME) $(OBJS) 
 
 all: $(NAME)
 
 clean:
-	@make clean -C $(PATHMLX)
+	@make clean -C $(PATHMINILIBX)
 	@rm -rf $(OBJFOLDER)
 
 fclean: clean
-	@rm -f $(MLX)
+	@rm -f $(MINILIBX)
 	@rm -f $(NAME)
 
 re: fclean all

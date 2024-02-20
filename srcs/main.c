@@ -2,15 +2,19 @@
 
 int	main(int argc, char *argv[])
 {
-	//void	*mlx;
+	t_data	data;
 	t_map	map;
-	
+
 	if (argc != 2)
 		error("There must be two arguments");
 	if (check_file_extension(argv[1]))
 		error("The file must be a .ber");
-	ft_map(argv[1], map);
+	data.mlx_ptr = mlx_init();
+	if (!data.mlx_ptr)
+		error("Could not initialize mlx");
+	ft_map(argv[1], &map);
 	printf("Exito!\n");
-	//free(map.parsed_map);
+	ft_free(map);
+	free(data.mlx_ptr);
 	exit(0);
 }

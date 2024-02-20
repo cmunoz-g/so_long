@@ -9,23 +9,23 @@
 		// rodeado de muros (1's)
 		// camino valido (seguir un rastro de 0 o C hasta la E) aqui si es un rastro solo de 0 es valido, o debes coger un C???
 
-void	check_map(t_map map) // TENGO QUE COMPROBAR SI LA SALIDA ESTA EN UN MURO?????? Y SI HAY MAS DE 2 SALIDAS?
+void	check_map(t_map *map) // TENGO QUE COMPROBAR SI LA SALIDA ESTA EN UN MURO?????? Y SI HAY MAS DE 2 SALIDAS?
 {
-	if (check_characters(map)) 
+	if (check_characters(*map)) 
 		error("The map has invalid characters");
-	if (check_ex_coll_pos(&map))
+	if (check_ex_coll_pos(map))
 		error("The map is missing an exit, collectable, or initial position");
-	if (check_rectangular(&map))
+	if (check_rectangular(map))
 		error("The map is not rectangular");
-	if (check_walls(map))
+	if (check_walls(*map))
 		error("The map is not enclosed");
-	if (check_path(&map, 'C')) 
+	if (check_path(map, 'C')) 
 		error("The character cannot get to a collectable");  // ver si es necesario que recoja todos los collectables???
-	if (check_path(&map, 'E')) 
+	if (check_path(map, 'E')) 
 		error("There is no path to exit the map");
 }
 
-void	ft_map(char *file, t_map map)
+void	ft_map(char *file, t_map *map)
 {
 	int		fd;
 	char	*line;
@@ -39,9 +39,10 @@ void	ft_map(char *file, t_map map)
 	while (buffer)
 	{
 		line = ft_strjoin(line, buffer);
+		free(buffer);
 		buffer = get_next_line(fd);
 	}
-	map.parsed_map = ft_split(line, '\n');
+	map->parsed_map = ft_split(line, '\n');
 	free(line);
 	check_map(map); 
 }
