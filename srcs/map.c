@@ -43,6 +43,7 @@ void	ft_map(char *file, t_map *map)
 		buffer = get_next_line(fd);
 	}
 	map->parsed_map = ft_split(line, '\n');
+	map->items = 0;
 	free(line);
 	check_map(map); 
 }

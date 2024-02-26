@@ -93,7 +93,6 @@ int	check_ex_coll_pos(t_map *map)
 {
 	int	i;
 	int	j;
-	int	check;
 
 	i = 0;
 	j = 0;
@@ -107,7 +106,7 @@ int	check_ex_coll_pos(t_map *map)
 					map->start_pos.y = i;
 				}
 			else if (map->parsed_map[i][j] == 'C')
-				check = 1;
+					map->items++;
 			else if (map->parsed_map[i][j] == 'E')
 				{
 					map->exit_pos.x = j;
@@ -118,7 +117,7 @@ int	check_ex_coll_pos(t_map *map)
 		j = 0;
 		i++;
 	}
-	if (check && map->start_pos.x && map->exit_pos.x)
+	if (map->items && map->start_pos.x && map->exit_pos.x)
 		return (0);
 	else 
 		return (1);

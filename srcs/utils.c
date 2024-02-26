@@ -32,7 +32,7 @@ void	init_visited(t_map *map, int visited[map->rows][map->cols])
 	}
 }
 
-void    *ft_memset(void *str, int c, size_t n)
+void    *ft_memset(void *str, int c, size_t n) // sustituir por libft
 {
     unsigned char *cpy;
 
@@ -45,8 +45,8 @@ void    *ft_memset(void *str, int c, size_t n)
     }
     return (str);
 }
-
-int ft_strncmp(const char *str1, const char *str2, size_t n)
+ 
+int ft_strncmp(const char *str1, const char *str2, size_t n) // sustituir por libft
 {
     size_t          i;
 
@@ -58,15 +58,15 @@ int ft_strncmp(const char *str1, const char *str2, size_t n)
     return ((unsigned char)str1[i] - (unsigned char)str2[i]);
 }
 
-void	ft_free(t_map map)
+void	ft_free(t_map *map)
 {
 	size_t	i;
 	
 	i = 0;
-	while (map.parsed_map[i])
+	while (map->parsed_map[i])
 	{
-		free(map.parsed_map[i]);
+		free(map->parsed_map[i]);
 		i++;
 	}
-	free(map.parsed_map);
+	free(map->parsed_map);
 }

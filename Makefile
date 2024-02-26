@@ -1,6 +1,6 @@
 NAME = so_long
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -Imlx_linux
 LDFLAGS = -fsanitize=address
 INCLUDE = inc/
 FOLDER = srcs/
@@ -8,9 +8,9 @@ OBJFOLDER = obj/
 SRCS = main.c checks.c error.c get_next_line.c get_next_line_utils.c map.c queue.c utils.c ft_split.c
 OBJS = $(SRCS:%.c=$(OBJFOLDER)%.o)
 
-MLX = mlx/libmlx_Linux.a 
-PATHMLX = mlx/
-MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
+MLX = minilibx-linux-master/libmlx_Linux.a
+PATHMLX = minilibx-linux-master/
+MLX_FLAGS = -L$(PATHMLX) -lXext -lX11
 
 $(OBJFOLDER)%.o: $(FOLDER)%.c 
 	@mkdir -p $(OBJFOLDER)

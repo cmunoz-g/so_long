@@ -8,13 +8,26 @@
 # include <unistd.h>
 # include <fcntl.h>
 
-# define BUFFER_SIZE 42 // comprobar si puedo usar esto, sino hardcodearlo en la gnl
+# define BUFFER_SIZE 42
+# define PLAYER = /textures/
+# define LAND = /textures/
+# define EXIT = /textures/
+# define ITEM = /textures/
+# define WALL = /textures/
+# define WIN = /textures/
+# define NO_WIN = 
 
 typedef	struct	s_position
 {
 	int	x;
 	int	y;
 }				t_position;
+
+typedef	struct	s_player
+{
+	t_position	player_pos;
+	int			player_movements;
+}				t_player;
 
 typedef struct	s_map
 {
@@ -24,14 +37,27 @@ typedef struct	s_map
 	t_position	item_pos;
 	int			rows; // cuantas lineas en el char **
 	int			cols; // cuantos caracteres en cada linea
-
+	int			items;
 }				t_map;
+
+typedef	struct	s_textures
+{
+	void	*player;
+	void	*land;
+	void	*exit;
+	void	*item;
+	void	*wall;
+	void	*win;
+	void	*no_win;
+}				t_textures;
 
 typedef struct	s_data
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	void	*textures[5];
+	void		*mlx_ptr;
+	void		*win_ptr;
+	t_map		map;
+	t_textures	text;
+	t_player	player;
 }				t_data;
 
 int	main(int argc, char *argv[]);
@@ -57,6 +83,7 @@ void	ft_explore(t_map *map, int visited[map->rows][map->cols], int front_rear[2]
 void	init_visited(t_map *map, int visited[map->rows][map->cols]);
 void    *ft_memset(void *str, int c, size_t n);
 void	ft_free(t_map map);
+void	load_textures(t_data data);
 
 char	*get_next_line(int fd);
 char	*ft_strchr(const char *str, int c);
