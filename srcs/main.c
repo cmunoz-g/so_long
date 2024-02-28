@@ -1,12 +1,11 @@
 #include "so_long.h"
 
-//TODO
+//TO DO
 
 // checks que anadir: que solo haya un jugador, que solo haya una salida y que pueda
 // coger TODOS los C antes de salir del mapa.
 
 // hacer que el pj mire hacia donde se ha hecho el ultimo movimiento
-// hacer que se pueda mover con las flechas
 
 void	printparsed(t_data data)
 {
@@ -38,10 +37,9 @@ int	main(int argc, char *argv[])
 	load_textures(&data);
 	init_player(&data);
 	data.win_ptr = mlx_new_window(data.mlx_ptr, (data.map.cols * 64), (data.map.rows * 64) , "so_long");
-	print_textures(data);	
+	print_textures(data);	// si sustituyo esto por una imagen, me printeara una pantalla de inicio.
 	mlx_hook(data.win_ptr, 17, 0L, &destroy, &data);
 	mlx_key_hook(data.win_ptr, &keypress, &data);
-	//mlx_loop_hook(data.mlx_ptr, print_textures, &data);
 	mlx_loop(data.mlx_ptr);
 	return(0);
 }
