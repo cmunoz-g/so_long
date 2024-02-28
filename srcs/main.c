@@ -14,6 +14,9 @@ void	printparsed(t_data data)
 		printf("%s\n",data.map.parsed_map[i]);
 		i++;
 	}
+	printf("rows:%d\n",data.map.rows);
+	printf("cols:%d\n",data.map.cols);
+	exit(0);
 }
 
 int	main(int argc, char *argv[])
@@ -35,7 +38,7 @@ int	main(int argc, char *argv[])
 	print_textures(data);	
 	mlx_hook(data.win_ptr, 17, 0L, &destroy, &data);
 	mlx_key_hook(data.win_ptr, &keypress, &data);
-	mlx_loop_hook(data.mlx_ptr, print_textures, &data);
+	//mlx_loop_hook(data.mlx_ptr, print_textures, &data);
 	mlx_loop(data.mlx_ptr);
 	return(0);
 }

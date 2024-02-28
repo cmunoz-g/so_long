@@ -100,6 +100,7 @@ void	left(t_data *data);
 void	down(t_data *data);
 void	up(t_data *data);
 void	end(t_data *data);
+void	print_movements(t_data data);
 
 char	*get_next_line(int fd);
 char	*ft_strchr(const char *str, int c);

@@ -35,7 +35,7 @@ int	destroy(t_data *data)
 	//mlx_destroy_display(data->mlx_ptr); // LINUX ONLY
 	cleanup_textures(data);
 	free(data->mlx_ptr);
-	free(data->map.parsed_map); // necesario?
+	//free(data->map.parsed_map); // necesario?
 	exit(0);
 	return(0);
 }
@@ -49,12 +49,13 @@ void	end(t_data *data)
 	}
 	else
 	{
-		ft_putstr_fd("You must get all collectables to finish!", 1);
+		ft_putstr_fd("You must get all collectables to finish!\n", 1);
 	}	
 }
 
 int	keypress(int keysym, t_data *data)
 {
+	print_movements(*data);
 	if (keysym == 13)
 	{
 		data->player.last_move = 'u';
@@ -77,5 +78,6 @@ int	keypress(int keysym, t_data *data)
 	}	
 	else if (keysym == 53)
 		destroy(data);
+	print_textures(*data);	
 	return(0);
 }

@@ -68,10 +68,9 @@ int	print_textures(t_data data)
 	
 	x = 0;
 	y = 0;
-	print_movements(data);
-	while (data.map.parsed_map[y])  // deberia asegurarme de que no entran a partes fuera del mapa
+	while (y < data.map.rows)  // deberia asegurarme de que no entran a partes fuera del mapa
 	{
-		while (data.map.parsed_map[y][x])
+		while (x < data.map.cols)
 		{
 			if (data.map.parsed_map[y][x] == 'P')
 				print_player_textures(data, x, y);
