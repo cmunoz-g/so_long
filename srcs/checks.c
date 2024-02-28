@@ -73,8 +73,8 @@ int	check_rectangular(t_map *map)
 
 	i = 0;
 	j = 0;
-	map->rows = rows(map); 
-	map->cols = columns(map);
+	map->rows = get_rows(map); 
+	map->cols = get_columns(map);
 	while (map->parsed_map[i])
 	{
 		j = 0;

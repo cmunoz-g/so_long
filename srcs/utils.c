@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-int	columns(t_map *map)
+int	get_columns(t_map *map)
 {
 	int	i;
 
@@ -10,7 +10,7 @@ int	columns(t_map *map)
 	return (i);
 }
 
-int rows(t_map *map)
+int get_rows(t_map *map)
 {
 	int	i;
 
@@ -69,4 +69,61 @@ void	ft_free(t_map *map)
 		i++;
 	}
 	free(map->parsed_map);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
+}
+
+//itoa: 
+
+size_t digitcount(long n)
+{
+    size_t  digits = 0;
+    if (n <= 0)
+    {
+        digits++;
+        n = -n;
+    }
+    while (n > 0)
+    {
+        digits++;
+        n /= 10;
+    }
+    return (digits);
+}
+
+char    *ft_itoa(int n)
+{
+    long    nlong;
+    size_t  digits;
+    char    *str;
+
+    nlong = n;
+    digits = digitcount(nlong);
+    str = (char *)malloc(digits + 1);
+    if (str == NULL)
+        return NULL;
+    str[digits] = '\0';
+    if (nlong < 0)
+    {
+        str[0] = 45;
+        nlong *= -1;
+    }
+    if (nlong == 0) 
+        str[0] = '0';
+    while (nlong > 0)
+    {
+        str[--digits] = (nlong % 10) + '0';
+        nlong /= 10;
+    }
+    return (str);
 }

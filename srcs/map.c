@@ -34,13 +34,17 @@ void	ft_map(char *file, t_map *map)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		error("Could not open the file");
-	buffer = get_next_line(fd); // aqui estoy alocando memoria para la linea, y dentro del while tmb con el join, mirar bien donde debo liberarla // CREO QUE YA BIEN 
-	line = ft_strdup(buffer);
-	while (buffer)
+	// aqui debajo estoy alocando memoria para la linea, y dentro del while tmb con el join, mirar bien donde debo liberarla // CREO QUE YA BIEN 
+	while (1)
 	{
-		line = ft_strjoin(line, buffer);
-		free(buffer);
 		buffer = get_next_line(fd);
+		if (!buffer)
+			break;
+		if (!line)
+			line = ft_strdup(buffer);
+		else
+			line = ft_strjoin(line, buffer);
+		free(buffer);
 	}
 	map->parsed_map = ft_split(line, '\n');
 	map->items = 0;

@@ -5,7 +5,7 @@ LDFLAGS = -fsanitize=address
 INCLUDE = inc/
 FOLDER = srcs/
 OBJFOLDER = obj/
-SRCS = main.c checks.c error.c get_next_line.c get_next_line_utils.c map.c queue.c utils.c ft_split.c
+SRCS = main.c checks.c error.c get_next_line.c get_next_line_utils.c map.c queue.c utils.c ft_split.c textures.c game.c moves.c
 OBJS = $(SRCS:%.c=$(OBJFOLDER)%.o)
 
 MLX = minilibx-linux-master/libmlx_Linux.a

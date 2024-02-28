@@ -2,115 +2,99 @@
 
 void	up(t_data *data)
 {
-	int	x;
-	int	y;
-
-	data.player.movements++;
-	if (data.map.parsed_map[data.player.y - 1][data.player.x])
+	data->player.movements++;
+	if (data->map.parsed_map[data->player.y - 1][data->player.x])
 	{
-		if (data.map.parsed_map[data.player.y - 1][data.player.x] == '0')
+		if (data->map.parsed_map[data->player.y - 1][data->player.x] == '0')
 		{
-			data.map.parsed_map[data.player.y][data.player.x] = '0';
-			data.map.parsed_map[data.player.y - 1][data.player.x] = 'P';
-			data.player.y--;
+			data->map.parsed_map[data->player.y][data->player.x] = '0';
+			data->map.parsed_map[data->player.y - 1][data->player.x] = 'P';
+			data->player.y--;
 		}
-		else if (data.map.parsed_map[data.player.y - 1][data.player.x] == '1')
+		else if (data->map.parsed_map[data->player.y - 1][data->player.x] == '1')
 			return ;
-		else if (data.map.parsed_map[data.player.y - 1][data.player.x] == 'E')
+		else if (data->map.parsed_map[data->player.y - 1][data->player.x] == 'E')
 			end(data);
-		else if (data.map.parsed_map[data.player.y - 1][data.player.x] == 'C')
+		else if (data->map.parsed_map[data->player.y - 1][data->player.x] == 'C')
 		{
-			data.map.items--;
-			data.map.parsed_map[data.player.y][data.player.x] = '0';
-			data.map.parsed_map[data.player.y - 1][data.player.x] = 'P';
-			data.player.y--;
+			data->map.items--;
+			data->map.parsed_map[data->player.y][data->player.x] = '0';
+			data->map.parsed_map[data->player.y - 1][data->player.x] = 'P';
+			data->player.y--;
 		}
-
 	}
 }
 void	down(t_data *data)
 {
-	int	x;
-	int	y;
-
-	data.player.movements++;
-	if (data.map.parsed_map[data.player.y + 1][data.player.x])
+	data->player.movements++;
+	if (data->map.parsed_map[data->player.y + 1][data->player.x])
 	{
-		if (data.map.parsed_map[data.player.y + 1][data.player.x] == '0')
+		if (data->map.parsed_map[data->player.y + 1][data->player.x] == '0')
 		{
-			data.map.parsed_map[data.player.y][data.player.x] = '0';
-			data.map.parsed_map[data.player.y + 1][data.player.x] = 'P';
-			data.player.y++;
+			data->map.parsed_map[data->player.y][data->player.x] = '0';
+			data->map.parsed_map[data->player.y + 1][data->player.x] = 'P';
+			data->player.y++;
 		}
-		else if (data.map.parsed_map[data.player.y + 1][data.player.x] == '1')
+		else if (data->map.parsed_map[data->player.y + 1][data->player.x] == '1')
 			return ;
-		else if (data.map.parsed_map[data.player.y + 1][data.player.x] == 'E')
+		else if (data->map.parsed_map[data->player.y + 1][data->player.x] == 'E')
 			end(data);
-		else if (data.map.parsed_map[data.player.y + 1][data.player.x] == 'C')
+		else if (data->map.parsed_map[data->player.y + 1][data->player.x] == 'C')
 		{
-			data.map.items--;
-			data.map.parsed_map[data.player.y][data.player.x] = '0';
-			data.map.parsed_map[data.player.y + 1][data.player.x] = 'P';
-			data.player.y++;
+			data->map.items--;
+			data->map.parsed_map[data->player.y][data->player.x] = '0';
+			data->map.parsed_map[data->player.y + 1][data->player.x] = 'P';
+			data->player.y++;
 		}
-
 	}
 }
 
 void	left(t_data *data)
 {
-	int	x;
-	int	y;
-
-	data.player.movements++;
-	if (data.map.parsed_map[data.player.y][data.player.x - 1])
+	data->player.movements++;
+	if (data->map.parsed_map[data->player.y][data->player.x - 1])
 	{
-		if (data.map.parsed_map[data.player.y][data.player.x - 1] == '0')
+		if (data->map.parsed_map[data->player.y][data->player.x - 1] == '0')
 		{
-			data.map.parsed_map[data.player.y][data.player.x] = '0';
-			data.map.parsed_map[data.player.y][data.player.x - 1] = 'P';
-			data.player.x--;
+			data->map.parsed_map[data->player.y][data->player.x] = '0';
+			data->map.parsed_map[data->player.y][data->player.x - 1] = 'P';
+			data->player.x--;
 		}
-		else if (data.map.parsed_map[data.player.y][data.player.x - 1] == '1')
+		else if (data->map.parsed_map[data->player.y][data->player.x - 1] == '1')
 			return ;
-		else if (data.map.parsed_map[data.player.y][data.player.x - 1] == 'E')
+		else if (data->map.parsed_map[data->player.y][data->player.x - 1] == 'E')
 			end(data);
-		else if (data.map.parsed_map[data.player.y][data.player.x - 1] == 'C')
+		else if (data->map.parsed_map[data->player.y][data->player.x - 1] == 'C')
 		{
-			data.map.items--;
-			data.map.parsed_map[data.player.y][data.player.x] = '0';
-			data.map.parsed_map[data.player.y][data.player.x - 1] = 'P';
-			data.player.x--;
+			data->map.items--;
+			data->map.parsed_map[data->player.y][data->player.x] = '0';
+			data->map.parsed_map[data->player.y][data->player.x - 1] = 'P';
+			data->player.x--;
 		}
-
 	}
 }
 void	right(t_data *data)
 {
-	int	x;
-	int	y;
-
-	data.player.movements++;
-	if (data.map.parsed_map[data.player.y][data.player.x + 1])
+	data->player.movements++;
+	if (data->map.parsed_map[data->player.y][data->player.x + 1])
 	{
-		if (data.map.parsed_map[data.player.y][data.player.x + 1] == '0')
+		if (data->map.parsed_map[data->player.y][data->player.x + 1] == '0')
 		{
-			data.map.parsed_map[data.player.y][data.player.x] = '0';
-			data.map.parsed_map[data.player.y][data.player.x + 1] = 'P';
-			data.player.x++;
+			data->map.parsed_map[data->player.y][data->player.x] = '0';
+			data->map.parsed_map[data->player.y][data->player.x + 1] = 'P';
+			data->player.x++;
 		}
-		else if (data.map.parsed_map[data.player.y][data.player.x + 1] == '1')
+		else if (data->map.parsed_map[data->player.y][data->player.x + 1] == '1')
 			return ;
-		else if (data.map.parsed_map[data.player.y][data.player.x + 1] == 'E')
+		else if (data->map.parsed_map[data->player.y][data->player.x + 1] == 'E')
 			end(data);
-		else if (data.map.parsed_map[data.player.y][data.player.x + 1] == 'C')
+		else if (data->map.parsed_map[data->player.y][data->player.x + 1] == 'C')
 		{
-			data.map.items--;
-			data.map.parsed_map[data.player.y][data.player.x] = '0';
-			data.map.parsed_map[data.player.y][data.player.x + 1] = 'P';
-			data.player.x++;
+			data->map.items--;
+			data->map.parsed_map[data->player.y][data->player.x] = '0';
+			data->map.parsed_map[data->player.y][data->player.x + 1] = 'P';
+			data->player.x++;
 		}
-
 	}
 }
 
