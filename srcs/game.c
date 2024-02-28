@@ -56,22 +56,22 @@ void	end(t_data *data)
 int	keypress(int keysym, t_data *data)
 {
 	print_movements(*data);
-	if (keysym == 13)
+	if (keysym == 13 || keysym == 126)
 	{
 		data->player.last_move = 'u';
 		up(data);
 	}
-	else if (keysym == 1)
+	else if (keysym == 1 || keysym == 125)
 	{
 		data->player.last_move = 'd';
 		down(data);
 	}
-	else if (keysym == 0)
+	else if (keysym == 0 || keysym == 123)
 	{
 		data->player.last_move = 'l';
 		left(data);
 	}	
-	else if (keysym == 2)
+	else if (keysym == 2 || keysym == 124)
 	{
 		data->player.last_move = 'r';
 		right(data);

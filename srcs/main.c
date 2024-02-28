@@ -1,9 +1,12 @@
 #include "so_long.h"
 
+//TODO
+
 // checks que anadir: que solo haya un jugador, que solo haya una salida y que pueda
 // coger TODOS los C antes de salir del mapa.
 
-// hacer que el pj mire hacia donde se ha hecho el ultimo movimiento?
+// hacer que el pj mire hacia donde se ha hecho el ultimo movimiento
+// hacer que se pueda mover con las flechas
 
 void	printparsed(t_data data)
 {
