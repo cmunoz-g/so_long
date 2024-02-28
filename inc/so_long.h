@@ -7,7 +7,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
-# include <X11/Xlib.h>
+//# include <X11/Xlib.h> //LINUX
 
 # define BUFFER_SIZE 42
 # define PLAYER_U "./textures/player.xpm"

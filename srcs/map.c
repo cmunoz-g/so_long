@@ -28,7 +28,7 @@ void	check_map(t_map *map) // TENGO QUE COMPROBAR SI LA SALIDA ESTA EN UN MURO??
 void	ft_map(char *file, t_map *map)
 {
 	int		fd;
-	char	*line;
+	char	*line = NULL; // poner en dos lineas
 	char	*buffer;
 
 	fd = open(file, O_RDONLY);
@@ -37,9 +37,12 @@ void	ft_map(char *file, t_map *map)
 	// aqui debajo estoy alocando memoria para la linea, y dentro del while tmb con el join, mirar bien donde debo liberarla // CREO QUE YA BIEN 
 	while (1)
 	{
-		buffer = get_next_line(fd);
+		buffer = get_next_line(fd); // esto esta metiendo un nl al final, revisar si puede dar problemas
 		if (!buffer)
+		{
+			close(fd);
 			break;
+		}
 		if (!line)
 			line = ft_strdup(buffer);
 		else

@@ -33,8 +33,8 @@ int	main(int argc, char *argv[])
 	init_player(&data);
 	data.win_ptr = mlx_new_window(data.mlx_ptr, (data.map.cols * 64), (data.map.rows * 64) , "so_long");
 	print_textures(data);	
-	mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &destroy, &data);
-	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &keypress, &data);
+	mlx_hook(data.win_ptr, 17, 0L, &destroy, &data);
+	mlx_key_hook(data.win_ptr, &keypress, &data);
 	mlx_loop_hook(data.mlx_ptr, print_textures, &data);
 	mlx_loop(data.mlx_ptr);
 	return(0);

@@ -32,9 +32,10 @@ int	destroy(t_data *data)
 {
 	ft_free(&data->map); 
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	mlx_destroy_display(data->mlx_ptr);
+	//mlx_destroy_display(data->mlx_ptr); // LINUX ONLY
 	cleanup_textures(data);
 	free(data->mlx_ptr);
+	free(data->map.parsed_map); // necesario?
 	exit(0);
 	return(0);
 }

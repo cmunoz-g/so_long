@@ -21,6 +21,8 @@ void	load_textures(t_data *data) // comprobar al 100x100 que si falla w o h sera
 	int	w;
 	int	h;
 
+	w = 0;
+	h = 0;
 	load_textures_player(data, w, h);
 	data->text.land = mlx_xpm_file_to_image(data->mlx_ptr, LAND, &w, &h);
 	if (w == 0 || h == 0)
