@@ -23,6 +23,8 @@ void	check_map_aux(t_map *map)
 
 void	check_map(t_map *map)
 {
+	if (map->parsed_map[0] == NULL)
+		error("Empty map");
 	if (check_characters(*map)) 
 		error("The map has invalid characters");
 	if (check_ex_coll_pos(map))
@@ -57,8 +59,13 @@ void	ft_map(char *file, t_map *map)
 			line = ft_strjoin(line, buffer);
 		free(buffer);
 	}
-	map->parsed_map = ft_split(line, '\n');
-	map->items = 0;
-	free(line);
-	check_map(map); 
+	if (!line)
+		error("Empty map");
+	else
+	{
+		map->parsed_map = ft_split(line, '\n');
+		map->items = 0;
+		free(line);
+		check_map(map);
+	} 
 }

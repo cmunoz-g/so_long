@@ -2,6 +2,8 @@
 
 //TO DO
 
+// si el mapa esta vacio crashea
+
 // hay un lil bug que hace que el sprite del personaje no cargue de primeras, revisar en MacOS en 42
 
 // limpiar norma y quitar comerntarios
