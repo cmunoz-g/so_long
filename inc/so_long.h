@@ -10,10 +10,10 @@
 //# include <X11/Xlib.h> //LINUX
 
 # define BUFFER_SIZE 42
-# define PLAYER_U "./textures/player.xpm"
-# define PLAYER_D "./textures/player.xpm"
-# define PLAYER_L "./textures/player.xpm"
-# define PLAYER_R "./textures/player.xpm"
+# define PLAYER_U "./textures/player_u.xpm"
+# define PLAYER_D "./textures/player_d.xpm"
+# define PLAYER_L "./textures/player_l.xpm"
+# define PLAYER_R "./textures/player_r.xpm"
 # define LAND "./textures/ground.xpm"
 # define EXIT "./textures/exit.xpm"
 # define ITEM "./textures/item.xpm"
@@ -38,7 +38,7 @@ typedef struct	s_map
 	char		**parsed_map;
 	t_position	exit_pos;
 	t_position	start_pos;
-	t_position	item_pos;
+	t_position	last_pos;
 	int			rows; // cuantas lineas en el char **
 	int			cols; // cuantos caracteres en cada linea
 	int			items;
@@ -66,7 +66,7 @@ typedef struct	s_data
 }				t_data;
 
 int	main(int argc, char *argv[]);
-int	check_path(t_map *map, char to_find);
+int	check_path(t_map *map, char to_find, int item_array[map->rows][map->cols]);
 int	check_walls(t_map map);
 int	check_rectangular(t_map *map);
 int	check_ex_coll_pos(t_map *map);
@@ -88,7 +88,7 @@ void	check_map(t_map *map);
 void	error(char *error_msg);
 void	auxfill(size_t len, size_t llsize, char *buff, char *long_line);
 void	ft_explore(t_map *map, int visited[map->rows][map->cols], int front_rear[2], t_position current, t_position *queue);
-void	init_visited(t_map *map, int visited[map->rows][map->cols]);
+void	init_array_queue(t_map *map, int array[map->rows][map->cols]);
 void    *ft_memset(void *str, int c, size_t n);
 void	ft_free(t_map *map);
 void	init_player(t_data *data);

@@ -1,30 +1,26 @@
 #include "so_long.h"
 
-int	check_path(t_map *map, char to_find)
+int	check_path(t_map *map, char to_find, int item_array[map->rows][map->cols])
 {
 	t_position queue[map->rows * map->cols];
 	t_position current;
 	int	front_rear[2];
 	int	visited[map->rows][map->cols];
 
+	init_array_queue(map, visited);
 	front_rear[0] = 0;
 	front_rear[1] = 0;
-	if (to_find == 'C')
-		queue[front_rear[0]] = map->start_pos;
-	else
-		queue[front_rear[0]] = map->item_pos;
+	queue[front_rear[0]] = map->last_pos;
 	current = queue[front_rear[1]++];
-	init_visited(map, visited);
-	if (to_find == 'C')
-		visited[map->start_pos.y][map->start_pos.x] = 1;
-	else
-		visited[map->item_pos.y][map->item_pos.x] = 1;
+	
+	visited[map->last_pos.y][map->last_pos.x] = 1;
 	while(front_rear[0] < front_rear[1])
 	{
-		if (map->parsed_map[current.y][current.x] == to_find)
+		if (map->parsed_map[current.y][current.x] == to_find && item_array[current.y][current.x] != 1)
 		{
-			if (to_find == 'C')
-				map->item_pos = current;
+			item_array[current.y][current.x] = 1;
+			map->last_pos.x = current.x;
+			map->last_pos.y = current.y;
 			return (0);
 		}
 		ft_explore(map, visited, front_rear, current, queue);
@@ -127,9 +123,13 @@ int	check_characters(t_map map)
 {
 	size_t	i;
 	size_t	j;
+	int		e;
+	int		p;
 
 	i = 0;
 	j = 0;
+	e = 0;
+	p = 0;
 	while (map.parsed_map[i])
 	{
 		while (map.parsed_map[i][j] && map.parsed_map[i][j] != '\n')
@@ -137,11 +137,17 @@ int	check_characters(t_map map)
 			if (map.parsed_map[i][j] != '1' && map.parsed_map[i][j] != '0' && map.parsed_map[i][j] != 'E'
 				&& map.parsed_map[i][j] != 'C' && map.parsed_map[i][j] != 'P')
 						return (1);
+			else if (map.parsed_map[i][j] == 'E')
+				e++;
+			else if (map.parsed_map[i][j] == 'P')
+				p++;
 			j++;
 		}
 		j = 0;
 		i++;
 	}
+	if (p > 1 || e > 1)
+		error("Duplicate character or exit");
 	return (0);
 }
 

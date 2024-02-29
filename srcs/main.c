@@ -2,24 +2,11 @@
 
 //TO DO
 
-// checks que anadir: que solo haya un jugador, que solo haya una salida y que pueda
-// coger TODOS los C antes de salir del mapa.
+// hay un lil bug que hace que el sprite del personaje no cargue de primeras, revisar en MacOS en 42
 
-// hacer que el pj mire hacia donde se ha hecho el ultimo movimiento
+// limpiar norma y quitar comerntarios
 
-void	printparsed(t_data data)
-{
-	int i = 0;
-
-	while (data.map.parsed_map[i])
-	{
-		printf("%s\n",data.map.parsed_map[i]);
-		i++;
-	}
-	printf("rows:%d\n",data.map.rows);
-	printf("cols:%d\n",data.map.cols);
-	exit(0);
-}
+// documentar y revisar nombres de ft y variables
 
 int	main(int argc, char *argv[])
 {
@@ -33,7 +20,6 @@ int	main(int argc, char *argv[])
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)
 		error("Could not initialize mlx");
-	//printparsed(data);
 	load_textures(&data);
 	init_player(&data);
 	data.win_ptr = mlx_new_window(data.mlx_ptr, (data.map.cols * 64), (data.map.rows * 64) , "so_long");

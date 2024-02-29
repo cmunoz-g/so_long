@@ -20,14 +20,14 @@ int get_rows(t_map *map)
 	return (i);
 }
 
-void	init_visited(t_map *map, int visited[map->rows][map->cols])
+void	init_array_queue(t_map *map, int array[map->rows][map->cols])
 {
 	int	i;
 	
 	i = 0;
 	while (i < map->rows)
 	{
-		ft_memset(visited[i], 0, map->cols * sizeof(int));
+		ft_memset(array[i], 0, map->cols * sizeof(int));
 		i++;
 	}
 }

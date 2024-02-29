@@ -35,7 +35,6 @@ int	destroy(t_data *data)
 	//mlx_destroy_display(data->mlx_ptr); // LINUX ONLY
 	cleanup_textures(data);
 	free(data->mlx_ptr);
-	//free(data->map.parsed_map); // necesario?
 	exit(0);
 	return(0);
 }
@@ -56,27 +55,27 @@ void	end(t_data *data)
 int	keypress(int keysym, t_data *data)
 {
 	print_movements(*data);
-	if (keysym == 13 || keysym == 126)
+	if (keysym == 13 || keysym == 126 || keysym == 119) // 119 linux
 	{
 		data->player.last_move = 'u';
 		up(data);
 	}
-	else if (keysym == 1 || keysym == 125)
+	else if (keysym == 1 || keysym == 125 || keysym == 115) // 115 linux
 	{
 		data->player.last_move = 'd';
 		down(data);
 	}
-	else if (keysym == 0 || keysym == 123)
+	else if (keysym == 0 || keysym == 123 || keysym == 97) // 97 linux quitar para la eval
 	{
 		data->player.last_move = 'l';
 		left(data);
 	}	
-	else if (keysym == 2 || keysym == 124)
+	else if (keysym == 2 || keysym == 124 || keysym == 100) // 100 linux
 	{
 		data->player.last_move = 'r';
 		right(data);
 	}	
-	else if (keysym == 53)
+	else if (keysym == 53 || keysym == 65307) //65307 linux
 		destroy(data);
 	print_textures(*data);	
 	return(0);
