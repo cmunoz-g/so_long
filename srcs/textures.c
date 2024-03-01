@@ -16,7 +16,7 @@ void	load_textures_player(t_data *data, int w, int h)
 		error("Could not load player right texture");
 }
 
-void	load_textures(t_data *data) // comprobar al 100x100 que si falla w o h seran 0
+void	load_textures(t_data *data)
 {
 	int	w;
 	int	h;
@@ -42,8 +42,8 @@ void	print_movements(t_data data)
 {
 	char	*str;
 
-	str = ft_itoa(data.player.movements); // revisar el data.player.movements porq a veces salen numeros basura
-	write(1, "Movements:", 10);
+	str = ft_itoa(data.player.movements);
+	write(1, "Movements: ", 11);
 	ft_putstr_fd(str, 1);
 	write(1, "\n", 1);
 	free(str);
@@ -68,7 +68,7 @@ int	print_textures(t_data data)
 	
 	x = 0;
 	y = 0;
-	while (y < data.map.rows)  // deberia asegurarme de que no entran a partes fuera del mapa
+	while (y < data.map.rows)
 	{
 		while (x < data.map.cols)
 		{

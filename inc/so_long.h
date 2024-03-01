@@ -66,7 +66,7 @@ typedef struct	s_data
 }				t_data;
 
 int	main(int argc, char *argv[]);
-int	check_path(t_map *map, char to_find, int item_array[map->rows][map->cols]);
+int	check_path(t_map *map, char to_find, int **item_array);
 int	check_walls(t_map map);
 int	check_rectangular(t_map *map);
 int	check_ex_coll_pos(t_map *map);
@@ -76,9 +76,11 @@ int	valid_point(int x, int y, t_map map);
 int ft_strncmp(const char *str1, const char *str2, size_t n);
 int get_rows(t_map *map);
 int	get_columns(t_map *map);
-int	destroy(t_data *data);
 int	keypress(int keysym, t_data *data);
 int	print_textures(t_data data);
+int	destroy(t_data *data);
+
+int	**mem_array_queue(t_map *map);
 
 size_t	ft_strlen(const char *str);
 size_t	ft_strlcat(char *dest, const char *src, size_t destsize);
@@ -87,8 +89,8 @@ void	ft_map(char *file, t_map *map);
 void	check_map(t_map *map);
 void	error(char *error_msg);
 void	auxfill(size_t len, size_t llsize, char *buff, char *long_line);
-void	ft_explore(t_map *map, int visited[map->rows][map->cols], int front_rear[2], t_position current, t_position *queue);
-void	init_array_queue(t_map *map, int array[map->rows][map->cols]);
+void	ft_explore(t_map *map, int **visited, int front_rear[2], t_position current, t_position *queue);
+void	init_array_queue(t_map *map, int **array);
 void    *ft_memset(void *str, int c, size_t n);
 void	ft_free(t_map *map);
 void	init_player(t_data *data);
@@ -101,6 +103,9 @@ void	down(t_data *data);
 void	up(t_data *data);
 void	end(t_data *data);
 void	print_movements(t_data data);
+void	ft_free_array(int **array);
+
+void	*ft_calloc(size_t nmemb, size_t size);
 
 char	*get_next_line(int fd);
 char	*ft_strchr(const char *str, int c);

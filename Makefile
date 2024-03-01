@@ -7,6 +7,7 @@ FOLDER = srcs/
 OBJFOLDER = obj/
 SRCS = main.c checks.c error.c get_next_line.c get_next_line_utils.c map.c queue.c utils.c ft_split.c textures.c moves.c game.c 
 OBJS = $(SRCS:%.c=$(OBJFOLDER)%.o)
+LIBFT = libft
 
 MINILIBX = minilibx/libmlx.a 
 PATHMINILIBX = minilibx/
@@ -18,16 +19,19 @@ $(OBJFOLDER)%.o: $(FOLDER)%.c
 
 $(NAME): $(OBJS)
 	@make -C $(PATHMINILIBX)
-	$(CC) -o $(NAME) $(OBJS) $(MINILIBX) $(MLX_FLAGS) $(LDFLAGS)
+	@make -C $(LIBFT)
+	$(CC) -o $(NAME) $(OBJS) $(MINILIBX) $(MLX_FLAGS) $(LDFLAGS) $(LIBFT)/libft.a
 
 all: $(NAME)
 
 clean:
 	@make clean -C $(PATHMINILIBX)
+	@make clean -C $(LIBFT)
 	@rm -rf $(OBJFOLDER)
 
 fclean: clean
 	@rm -f $(MINILIBX)
+	@rm -f $(LIBFT)
 	@rm -f $(NAME)
 
 re: fclean all

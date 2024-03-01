@@ -6,7 +6,7 @@
 /*   By: cmunoz-g <cmunoz-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:45:38 by cmunoz-g          #+#    #+#             */
-/*   Updated: 2024/02/28 12:22:44 by cmunoz-g         ###   ########.fr       */
+/*   Updated: 2024/03/01 15:54:13 by cmunoz-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,28 +115,3 @@ char	*get_next_line(int fd)
 	long_line = restline(long_line, line);
 	return (line);
 }
-
-// void	leaks(void)
-// {
-// 	system("leaks a.out");
-// }
-
-// int	main(void)
-// {
-// 	int fd = open("read_error.txt", O_RDONLY);
-// 	char *line;
-// 	int i =1;
-
-// 	atexit(leaks);
-//  	line = get_next_line(fd);
-// 	while (line)
-// 	{
-// 		printf("%d line: %s", i, line);	
-// 		free(line);
-// 		line = get_next_line(fd);
-// 		i++;
-// 	}
-// 	free(line);
-// 	close(fd);
-// 	return (0);
-// }
