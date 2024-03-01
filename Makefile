@@ -31,7 +31,7 @@ clean:
 
 fclean: clean
 	@rm -f $(MINILIBX)
-	@rm -f $(LIBFT)
+	@make fclean -C $(LIBFT)
 	@rm -f $(NAME)
 
 re: fclean all
