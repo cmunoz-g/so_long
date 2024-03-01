@@ -32,10 +32,9 @@ int	destroy(t_data *data)
 {
 	ft_free(&data->map); 
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	//mlx_destroy_display(data->mlx_ptr); // LINUX ONLY
 	cleanup_textures(data);
 	free(data->mlx_ptr);
-	exit(0);
+	exit(0); // probar quitando estoo
 	return(0);
 }
 
@@ -52,30 +51,39 @@ void	end(t_data *data)
 	}	
 }
 
+/*
+Keys for Linux:
+- Up: 119
+- Down: 115
+- Left: 97
+- Right: 100
+- Escape: 65307
+*/
+
 int	keypress(int keysym, t_data *data)
 {
 	print_movements(*data);
-	if (keysym == 13 || keysym == 126 || keysym == 119) // 119 linux
+	if (keysym == 13 || keysym == 126) 
 	{
 		data->player.last_move = 'u';
 		up(data);
 	}
-	else if (keysym == 1 || keysym == 125 || keysym == 115) // 115 linux
+	else if (keysym == 1 || keysym == 125) 
 	{
 		data->player.last_move = 'd';
 		down(data);
 	}
-	else if (keysym == 0 || keysym == 123 || keysym == 97) // 97 linux quitar para la eval
+	else if (keysym == 0 || keysym == 123) 
 	{
 		data->player.last_move = 'l';
 		left(data);
 	}	
-	else if (keysym == 2 || keysym == 124 || keysym == 100) // 100 linux
+	else if (keysym == 2 || keysym == 124)
 	{
 		data->player.last_move = 'r';
 		right(data);
 	}	
-	else if (keysym == 53 || keysym == 65307) //65307 linux
+	else if (keysym == 53)
 		destroy(data);
 	print_textures(*data);	
 	return(0);

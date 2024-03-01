@@ -16,7 +16,6 @@ void	check_map_aux(t_map *map)
 			error("There is no valid path");  
 		items--;
 	}
-	printf("%d\n",items);
 	if (check_path(map, 'E', item_array) || items != 0)
 			error("There is no valid path"); 
 }
