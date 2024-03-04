@@ -3,46 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmunoz-g <cmunoz-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: camunozg <camunozg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:59:14 by cmunoz-g          #+#    #+#             */
-/*   Updated: 2024/03/01 15:44:26 by cmunoz-g         ###   ########.fr       */
+/*   Updated: 2024/03/04 13:19:33 by camunozg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-//TO DO
-
-
-// revisar todos los casos posibles de mapa incorrecto y los msg (cambiar el error msg ese de duplicate e o p?)
-// mapa no rect, 0 e, demasiadas e, demasiadas p, 0 p, no enclosed, no path, vacio, lineas vacias al final (1 y varias), 
-// caracter no de los que pueden ser
-
-// organizar las funciones mejor por archivo.
-
-// limpiar norma y quitar comerntarios
-
-// documentar y revisar nombres de ft y variables
-
-
-
-// void leaks()
-// {
-// 	system("leaks so_long");
-// }
+// comprobar que TODOS los casos de error no tengan leaks y YA 
 
 int	main(int argc, char *argv[])
 {
 	t_data	data;
 
-	// atexit(leaks);
-
 	if (argc != 2)
 		error("There must be two arguments");
 	if (check_file_extension(argv[1]))
 		error("The file must be a .ber");
-	ft_map(argv[1], &data.map);
+	map(argv[1], &data.map);
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)
 		error("Could not initialize mlx");

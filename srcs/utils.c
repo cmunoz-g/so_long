@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmunoz-g <cmunoz-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: camunozg <camunozg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 16:33:30 by cmunoz-g          #+#    #+#             */
-/*   Updated: 2024/03/01 16:36:36 by cmunoz-g         ###   ########.fr       */
+/*   Updated: 2024/03/04 12:15:40 by camunozg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,40 +32,13 @@ int get_rows(t_map *map)
 	return (i);
 }
 
-void	init_array_queue(t_map *map, int **array)
+void	error(char *error_msg)
 {
-	int	i;
+	size_t	msg_len;
 
-	i = 0;
-	while (i < map->rows)
-	{
-		ft_memset(array[i], 0, map->cols * sizeof(int));
-		i++;
-	}
-}
-
-void	ft_free(t_map *map)
-{
-	size_t	i;
-
-	i = 0;
-	while (map->parsed_map[i])
-	{
-		free(map->parsed_map[i]);
-		i++;
-	}
-	free(map->parsed_map);
-}
-
-void	ft_free_array(int **array)
-{
-	size_t	i;
-
-    i = 0;
-	while (array[i])
-    {
-        free(array[i]);
-        i++;
-    }
-    free(array);
+	msg_len = ft_strlen(error_msg);
+	write(2, "Error\n", 6);
+	write(2, error_msg, msg_len);
+	write(2, "\n", 1);
+	exit(EXIT_FAILURE);
 }

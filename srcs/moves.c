@@ -1,5 +1,15 @@
 #include "so_long.h"
 
+/**
+ * These movement functions (up, down, left, right) update the player's position on the map
+ * in response to player inputs. Each function increases the player's movement count and 
+ * performs the following checks at the intended destination cell: if it's an open path ('0'), 
+ * the player moves into the space; if it's a wall ('1'), movement is blocked; if it's a collectible ('C'), 
+ * it is collected, decrementing the total item count and updating the position; if it's an exit ('E'), 
+ * it potentially triggers the game's end condition. These functions collectively manage the player's 
+ * spatial interactions and consequences within the game's grid.
+ */
+
 void	up(t_data *data)
 {
 	data->player.movements++;

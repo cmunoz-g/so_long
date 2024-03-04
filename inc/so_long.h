@@ -7,7 +7,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
-//# include <X11/Xlib.h> //LINUX
+# include "../libft/libft.h"
 
 # define BUFFER_SIZE 42
 # define PLAYER_U "./textures/player_u.xpm"
@@ -39,8 +39,8 @@ typedef struct	s_map
 	t_position	exit_pos;
 	t_position	start_pos;
 	t_position	last_pos;
-	int			rows; // cuantas lineas en el char **
-	int			cols; // cuantos caracteres en cada linea
+	int			rows; 
+	int			cols; 
 	int			items;
 }				t_map;
 
@@ -66,57 +66,69 @@ typedef struct	s_data
 }				t_data;
 
 int	main(int argc, char *argv[]);
-int	check_path(t_map *map, char to_find, int **item_array);
-int	check_walls(t_map map);
-int	check_rectangular(t_map *map);
-int	check_ex_coll_pos(t_map *map);
-int	check_characters(t_map map);
-int	check_file_extension(char *file);
-int	valid_point(int x, int y, t_map map);
-int ft_strncmp(const char *str1, const char *str2, size_t n);
-int get_rows(t_map *map);
-int	get_columns(t_map *map);
-int	keypress(int keysym, t_data *data);
-int	print_textures(t_data data);
-int	destroy(t_data *data);
 
-int	**mem_array_queue(t_map *map);
-
-size_t	ft_strlen(const char *str);
-size_t	ft_strlcat(char *dest, const char *src, size_t destsize);
-
-void	ft_map(char *file, t_map *map);
+// map
+int		get_map(char **buffer, char **line, int *fd);
+void	map(char *file, t_map *map);
 void	check_map(t_map *map);
-void	error(char *error_msg);
-void	auxfill(size_t len, size_t llsize, char *buff, char *long_line);
+void	check_path(t_map *map);
+void	check_path_aux(t_map *map, int **item_array);
+
+// checks
+int		check_characters(t_map map);
+int		check_positions(t_map *map);
+int		check_items(t_map *map);
+void	get_start_pos(t_map *map, int i, int j, int *count);
+void	get_exit_pos(t_map *map, int i, int j, int *count);
+
+// checks_aux
+int		check_rectangular(t_map *map);
+int		check_walls(t_map map);
+int		check_file_extension(char *file);
+void	check_nl(char *line);
+
+// bfs
+int		bfs_algorithm(t_map *map, char to_find, int **item_array);
+int		bfs_algorithm_aux(t_map *map, char to_find, int **visited, t_position *queue, int **item_array);
+int		valid_point(int x, int y, t_map map);
 void	ft_explore(t_map *map, int **visited, int front_rear[2], t_position current, t_position *queue);
-void	init_array_queue(t_map *map, int **array);
-void    *ft_memset(void *str, int c, size_t n);
-void	ft_free(t_map *map);
+
+// game
+int		keypress(int keysym, t_data *data);
+int		destroy(t_data *data);
 void	init_player(t_data *data);
-void	load_textures(t_data *data);
-void	print_player_textures(t_data data, int x, int y);
-void	ft_putstr_fd(char *s, int fd); // libft
-void	right(t_data *data);
-void	left(t_data *data);
-void	down(t_data *data);
-void	up(t_data *data);
 void	end(t_data *data);
+void	cleanup_textures(t_data *data);
+
+// moves
+void	up(t_data *data);
+void	down(t_data *data);
+void	left(t_data *data);
+void	right(t_data *data);
+
+// textures
+int		print_textures(t_data data);
+void	load_textures(t_data *data);
+void	load_textures_player(t_data *data, int w, int h);
+void	print_player_textures(t_data data, int x, int y);
 void	print_movements(t_data data);
-void	ft_free_array(int **array);
 
-void	*ft_calloc(size_t nmemb, size_t size);
+// memory
+int		**mem_array_queue(t_map *map);
+void	init_array_queue(t_map *map, int **array);
+void	free_map(t_map *map);
+void	free_array(int **array, t_map *map);
 
+// utils
+int 	get_rows(t_map *map);
+int		get_columns(t_map *map);
+void	error(char *error_msg);
+
+// gnl
 char	*get_next_line(int fd);
-char	*ft_strchr(const char *str, int c);
-char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_read(int fd, char *long_line, char *buffer);
+void	auxfill(size_t len, size_t llsize, char *buff, char *long_line);
 char	*ft_linefill(char *long_line);
 char	*restline(char *long_line, char *line);
-char	*ft_strdup(const char *s);
-char    *ft_itoa(int n); //libft
-
-char	**ft_split(char const *s, char c);
-
 
 #endif
