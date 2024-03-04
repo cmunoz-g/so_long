@@ -6,13 +6,14 @@
 /*   By: camunozg <camunozg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:59:14 by cmunoz-g          #+#    #+#             */
-/*   Updated: 2024/03/04 13:19:33 by camunozg         ###   ########.fr       */
+/*   Updated: 2024/03/04 13:20:19 by camunozg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 // comprobar que TODOS los casos de error no tengan leaks y YA 
+// cambiar la libft por el repo, PRIMERO SUBIR EL REPO ACTUALIZADO DESDE 42 PARA NORMA ETC
 
 int	main(int argc, char *argv[])
 {
