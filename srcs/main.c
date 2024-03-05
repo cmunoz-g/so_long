@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: camunozg <camunozg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmunoz-g <cmunoz-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:59:14 by cmunoz-g          #+#    #+#             */
-/*   Updated: 2024/03/05 08:49:54 by camunozg         ###   ########.fr       */
+/*   Updated: 2024/03/05 19:43:28 by cmunoz-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-// comprobar que TODOS los casos de error no tengan leaks y YA 
-// cambiar la libft por el repo, PRIMERO SUBIR EL REPO ACTUALIZADO DESDE 42 PARA NORMA ETC
+// quitar las keys de linux
+// tamano maximo 5120 x 2880
+// noborder.ber github mario
 
 int	main(int argc, char *argv[])
 {
@@ -32,8 +33,8 @@ int	main(int argc, char *argv[])
 	data.win_ptr = mlx_new_window(data.mlx_ptr, (data.map.cols * 64),
 			(data.map.rows * 64), "so_long");
 	print_textures(data);
-	mlx_hook(data.win_ptr, 17, 0L, &destroy, &data);
-	mlx_key_hook(data.win_ptr, &keypress, &data);
+	mlx_hook(data.win_ptr, 17, 0L, destroy, &data);
+	mlx_key_hook(data.win_ptr, keypress, &data);
 	mlx_loop(data.mlx_ptr);
 	return (0);
 }

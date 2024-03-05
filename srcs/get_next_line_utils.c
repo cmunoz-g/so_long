@@ -6,7 +6,7 @@
 /*   By: cmunoz-g <cmunoz-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:12:41 by cmunoz-g          #+#    #+#             */
-/*   Updated: 2024/03/01 11:58:56 by cmunoz-g         ###   ########.fr       */
+/*   Updated: 2024/03/05 19:20:47 by cmunoz-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ size_t	ft_strlcat(char *dest, const char *src, size_t destsize)
 	}
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin_gnl(char const *s1, char const *s2)
 {
 	char	*s3;
 	size_t	s3size;
@@ -77,37 +77,4 @@ char	*ft_strchr(const char *str, int c)
 	if (ch == '\0')
 		return ((char *)str);
 	return (0);
-}
-
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strdup(const char *s)
-{
-	size_t	size;
-	char	*cpy;
-	size_t	i;
-
-	size = ft_strlen(s) + 1;
-	cpy = (char *)malloc(size);
-	if (!cpy)
-		return (NULL);
-	i = 0;
-	if (size > 0)
-	{
-		while (s[i] && i < size)
-		{
-			cpy[i] = s[i];
-			i++;
-		}
-		cpy[i] = '\0';
-	}
-	return (cpy);
 }

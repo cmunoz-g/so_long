@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cmunoz-g <cmunoz-g@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/05 16:13:12 by cmunoz-g          #+#    #+#             */
+/*   Updated: 2024/03/05 19:39:53 by cmunoz-g         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
-#define SO_LONG_H
+# define SO_LONG_H
 
 # include <mlx.h>
 # include <math.h>
@@ -19,13 +31,13 @@
 # define ITEM "./textures/item.xpm"
 # define WALL "./textures/wall.xpm"
 
-typedef	struct	s_position
+typedef struct s_pos
 {
 	int	x;
 	int	y;
-}				t_position;
+}				t_pos;
 
-typedef	struct	s_player
+typedef struct s_player
 {
 	int			x;
 	int			y;
@@ -33,18 +45,19 @@ typedef	struct	s_player
 	char		last_move;
 }				t_player;
 
-typedef struct	s_map
+typedef struct s_map
 {
-	char		**parsed_map;
-	t_position	exit_pos;
-	t_position	start_pos;
-	t_position	last_pos;
-	int			rows; 
-	int			cols; 
+	char		**parsed;
+	t_pos		exit_pos;
+	t_pos		start_pos;
+	t_pos		last_pos;
+	t_pos		*queue;
+	int			rows;
+	int			cols;
 	int			items;
 }				t_map;
 
-typedef	struct	s_textures
+typedef struct s_textures
 {
 	void	*player_u;
 	void	*player_d;
@@ -56,7 +69,7 @@ typedef	struct	s_textures
 	void	*wall;
 }				t_textures;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
@@ -65,7 +78,7 @@ typedef struct	s_data
 	t_player	player;
 }				t_data;
 
-int	main(int argc, char *argv[]);
+int		main(int argc, char *argv[]);
 
 // map
 int		get_map(char **buffer, char **line, int *fd);
@@ -89,9 +102,9 @@ void	check_nl(char *line);
 
 // bfs
 int		bfs_algorithm(t_map *map, char to_find, int **item_array);
-int		bfs_algorithm_aux(t_map *map, char to_find, int **visited, t_position *queue, int **item_array);
+int		bfs_aux(t_map *map, char to_find, int **visited, int **item_array);
 int		valid_point(int x, int y, t_map map);
-void	ft_explore(t_map *map, int **visited, int front_rear[2], t_position current, t_position *queue);
+void	explore(t_map *map, int **visited, int front_rear[2], t_pos current);
 
 // game
 int		keypress(int keysym, t_data *data);
@@ -111,7 +124,7 @@ int		print_textures(t_data data);
 void	load_textures(t_data *data);
 void	load_textures_player(t_data *data, int w, int h);
 void	print_player_textures(t_data data, int x, int y);
-void	print_movements(t_data data);
+void	print_textures_aux(t_data data, int x, int y);
 
 // memory
 int		**mem_array_queue(t_map *map);
@@ -120,9 +133,10 @@ void	free_map(t_map *map);
 void	free_array(int **array, t_map *map);
 
 // utils
-int 	get_rows(t_map *map);
+int		get_rows(t_map *map);
 int		get_columns(t_map *map);
 void	error(char *error_msg);
+void	print_movements(t_data data);
 
 // gnl
 char	*get_next_line(int fd);
@@ -130,5 +144,6 @@ char	*ft_read(int fd, char *long_line, char *buffer);
 void	auxfill(size_t len, size_t llsize, char *buff, char *long_line);
 char	*ft_linefill(char *long_line);
 char	*restline(char *long_line, char *line);
+char	*ft_strjoin_gnl(char const *s1, char const *s2);
 
 #endif

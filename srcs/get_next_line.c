@@ -6,7 +6,7 @@
 /*   By: cmunoz-g <cmunoz-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:45:38 by cmunoz-g          #+#    #+#             */
-/*   Updated: 2024/03/01 15:54:13 by cmunoz-g         ###   ########.fr       */
+/*   Updated: 2024/03/05 17:26:00 by cmunoz-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ char	*ft_read(int fd, char *long_line, char *buffer)
 		if (!long_line)
 			long_line = ft_strdup(buffer);
 		else
-			long_line = ft_strjoin(long_line, buffer);
+			long_line = ft_strjoin_gnl(long_line, buffer);
 	}
 	free(buffer);
 	return (long_line);

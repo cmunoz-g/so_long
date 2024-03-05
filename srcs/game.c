@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: camunozg <camunozg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmunoz-g <cmunoz-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:52:05 by cmunoz-g          #+#    #+#             */
-/*   Updated: 2024/03/04 13:13:34 by camunozg         ###   ########.fr       */
+/*   Updated: 2024/03/05 19:15:35 by cmunoz-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	init_player(t_data *data)
  * @param data Pointer to the game data structure.
  * @return Always returns 0 to indicate successful handling.
  * 
- * It updates the player's movement direction and ensures that any movement or action is reflected visually
- * by updating textures.
+ * It updates the player's movement direction and ensures that any movement
+ * or action is reflected visually by updating textures.
  *
  * Keys for Linux:
  * Up: 119
@@ -84,7 +84,6 @@ int	destroy(t_data *data)
 	free_map(&data->map);
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	cleanup_textures(data);
-	free(data->mlx_ptr);
 	exit(0);
 	return (0);
 }

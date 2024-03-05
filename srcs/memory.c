@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   memory.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cmunoz-g <cmunoz-g@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/05 19:22:37 by cmunoz-g          #+#    #+#             */
+/*   Updated: 2024/03/05 19:27:16 by cmunoz-g         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 int	**mem_array_queue(t_map *map)
@@ -42,19 +54,19 @@ void	free_map(t_map *map)
 	size_t	i;
 
 	i = 0;
-	while (map->parsed_map[i])
+	while (map->parsed[i])
 	{
-		free(map->parsed_map[i]);
+		free(map->parsed[i]);
 		i++;
 	}
-	free(map->parsed_map);
+	free(map->parsed);
 }
 
 void	free_array(int **array, t_map *map)
 {
 	int	i;
 
-    i = 0;
+	i = 0;
 	if (array)
 	{
 		while (i < map->rows)

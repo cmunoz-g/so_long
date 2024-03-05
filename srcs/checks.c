@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: camunozg <camunozg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmunoz-g <cmunoz-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:41:16 by cmunoz-g          #+#    #+#             */
-/*   Updated: 2024/03/04 10:30:28 by camunozg         ###   ########.fr       */
+/*   Updated: 2024/03/05 19:28:17 by cmunoz-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int	check_characters(t_map map)
 
 	i = 0;
 	j = 0;
-	while (map.parsed_map[i])
+	while (map.parsed[i])
 	{
-		while (map.parsed_map[i][j] && map.parsed_map[i][j] != '\n')
+		while (map.parsed[i][j] && map.parsed[i][j] != '\n')
 		{
-			if (map.parsed_map[i][j] != '1' && map.parsed_map[i][j] != '0'
-				&& map.parsed_map[i][j] != 'E' && map.parsed_map[i][j] != 'C'
-				&& map.parsed_map[i][j] != 'P')
+			if (map.parsed[i][j] != '1' && map.parsed[i][j] != '0'
+				&& map.parsed[i][j] != 'E' && map.parsed[i][j] != 'C'
+				&& map.parsed[i][j] != 'P')
 				return (1);
 			j++;
 		}
@@ -34,6 +34,7 @@ int	check_characters(t_map map)
 	}
 	return (0);
 }
+
 void	get_start_pos(t_map *map, int i, int j, int *count)
 {
 	map->start_pos.x = j;
@@ -54,13 +55,13 @@ int	check_positions(t_map *map)
 	static int	j = 0;
 	static int	count = 0;
 
-	while (map->parsed_map[i])
+	while (map->parsed[i])
 	{
-		while (map->parsed_map[i][j])
+		while (map->parsed[i][j])
 		{
-			if (map->parsed_map[i][j] == 'P')
+			if (map->parsed[i][j] == 'P')
 				get_start_pos(map, i, j, &count);
-			else if (map->parsed_map[i][j] == 'E')
+			else if (map->parsed[i][j] == 'E')
 				get_exit_pos(map, i, j, &count);
 			j++;
 		}
@@ -72,16 +73,17 @@ int	check_positions(t_map *map)
 	else
 		return (1);
 }
+
 int	check_items(t_map *map)
 {
 	static int	i = 0;
 	static int	j = 0;
 
-	while (map->parsed_map[i])
+	while (map->parsed[i])
 	{
-		while (map->parsed_map[i][j])
+		while (map->parsed[i][j])
 		{
-			if (map->parsed_map[i][j] == 'C')
+			if (map->parsed[i][j] == 'C')
 				map->items++;
 			j++;
 		}
