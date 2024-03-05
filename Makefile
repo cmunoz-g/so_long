@@ -20,7 +20,7 @@ $(OBJFOLDER)%.o: $(FOLDER)%.c
 $(NAME): $(OBJS) 
 	@make -C $(LIBFT)
 	@make -C $(PATHMLX)
-	$(CC) -o $(NAME) $(OBJS) $(LIBFT)/libft.a $(MLX) $(MLX_FLAGS) $(LDFLAGS) 
+	$(CC) -o $(NAME) $(OBJS) $(LIBFT)/libft.a $(MLX) $(MLX_FLAGS) $(LDFLAGS)
 
 all: $(NAME)
 
