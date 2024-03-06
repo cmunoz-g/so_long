@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmunoz-g <cmunoz-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: camunozg <camunozg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:37:08 by cmunoz-g          #+#    #+#             */
-/*   Updated: 2024/03/05 19:27:44 by cmunoz-g         ###   ########.fr       */
+/*   Updated: 2024/03/06 08:55:51 by camunozg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,8 @@ int	get_map(char **buffer, char **line, int *fd)
  * @param map Pointer to the map structure to be validated.
  * 
  * Checks various aspects of the map structure for validity, including 
- * map content (characters),
- * layout (rectangular shape, enclosed walls) and the presence of necessary 
- * game elements (items, player, exit).
+ * map content (characters), layout (rectangular shape, enclosed walls)
+ * and the presence of necessary  game elements (items, player, exit).
  * Triggers an error if any validation fails.
  */
 
@@ -117,6 +116,8 @@ void	check_map(t_map *map)
 		error("The map has no items");
 	if (check_rectangular(map))
 		error("The map is not rectangular");
+	if ((map->rows * 64) > 2880 || (map->cols * 64) > 5120)
+		error("The map is bigger than the screen");
 	if (check_walls(*map))
 		error("The map is not enclosed");
 	check_path(map);

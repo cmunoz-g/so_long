@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmunoz-g <cmunoz-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: camunozg <camunozg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 16:31:03 by cmunoz-g          #+#    #+#             */
-/*   Updated: 2024/03/05 19:28:42 by cmunoz-g         ###   ########.fr       */
+/*   Updated: 2024/03/06 08:59:44 by camunozg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ int	bfs_aux(t_map *map, char to_find, int **visited, int **item_array)
 	map->queue[front_rear[0]] = map->last_pos;
 	current = map->queue[front_rear[1]++];
 	visited[map->last_pos.y][map->last_pos.x] = 1;
+	if (to_find == 'C')
+		visited[map->exit_pos.y][map->exit_pos.x] = 1;
 	while (front_rear[0] < front_rear[1])
 	{
 		if (map->parsed[current.y][current.x] == to_find

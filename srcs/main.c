@@ -3,18 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmunoz-g <cmunoz-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: camunozg <camunozg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:59:14 by cmunoz-g          #+#    #+#             */
-/*   Updated: 2024/03/05 19:43:28 by cmunoz-g         ###   ########.fr       */
+/*   Updated: 2024/03/06 09:00:43 by camunozg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+// en 42:
 // quitar las keys de linux
-// tamano maximo 5120 x 2880
-// noborder.ber github mario
+// revisar con un mapa de exactamente la pantalla, exactamente 64 pixeles menos y 64 pixeles mas
+// revisar leaks 
+// repasar norma
+// linkear libft
+// ultimo git push a mi github
+// sustituir libft por archivos comunes, subir al repo
 
 int	main(int argc, char *argv[])
 {
