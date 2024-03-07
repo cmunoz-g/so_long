@@ -6,18 +6,11 @@
 /*   By: cmunoz-g <cmunoz-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:59:14 by cmunoz-g          #+#    #+#             */
-/*   Updated: 2024/03/07 09:18:32 by cmunoz-g         ###   ########.fr       */
+/*   Updated: 2024/03/07 09:22:44 by cmunoz-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-// en 42:
-// repasar norma
-// linkear libft
-// ultimo git push a mi github
-// sustituir libft por archivos comunes, quitar 
-// carpeta de Linux, ver que mapas me quedo, subir al repo
 
 int	main(int argc, char *argv[])
 {
