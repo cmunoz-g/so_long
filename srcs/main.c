@@ -3,23 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: camunozg <camunozg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmunoz-g <cmunoz-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:59:14 by cmunoz-g          #+#    #+#             */
-/*   Updated: 2024/03/06 09:01:40 by camunozg         ###   ########.fr       */
+/*   Updated: 2024/03/07 09:18:32 by cmunoz-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 // en 42:
-// quitar las keys de linux
-// revisar con un mapa de exactamente la pantalla, exactamente 64 pixeles menos y 64 pixeles mas
-// revisar leaks 
 // repasar norma
 // linkear libft
 // ultimo git push a mi github
-// sustituir libft por archivos comunes, quitar carpeta de Linux, ver que mapas me quedo, subir al repo
+// sustituir libft por archivos comunes, quitar 
+// carpeta de Linux, ver que mapas me quedo, subir al repo
 
 int	main(int argc, char *argv[])
 {

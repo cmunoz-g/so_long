@@ -6,7 +6,7 @@
 /*   By: cmunoz-g <cmunoz-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:52:05 by cmunoz-g          #+#    #+#             */
-/*   Updated: 2024/03/05 19:15:35 by cmunoz-g         ###   ########.fr       */
+/*   Updated: 2024/03/07 09:01:44 by cmunoz-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,27 +42,27 @@ void	init_player(t_data *data)
 int	keypress(int keysym, t_data *data)
 {
 	print_movements(*data);
-	if (keysym == 13 || keysym == 126 || keysym == 119)
+	if (keysym == 13 || keysym == 126)
 	{
 		data->player.last_move = 'u';
 		up(data);
 	}
-	else if (keysym == 1 || keysym == 125 || keysym == 115)
+	else if (keysym == 1 || keysym == 125)
 	{
 		data->player.last_move = 'd';
 		down(data);
 	}
-	else if (keysym == 0 || keysym == 123 || keysym == 97)
+	else if (keysym == 0 || keysym == 123)
 	{
 		data->player.last_move = 'l';
 		left(data);
 	}
-	else if (keysym == 2 || keysym == 124 || keysym == 100)
+	else if (keysym == 2 || keysym == 124)
 	{
 		data->player.last_move = 'r';
 		right(data);
 	}
-	else if (keysym == 53 || keysym == 65307)
+	else if (keysym == 53)
 		destroy(data);
 	print_textures(*data);
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: camunozg <camunozg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmunoz-g <cmunoz-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:37:08 by cmunoz-g          #+#    #+#             */
-/*   Updated: 2024/03/06 08:55:51 by camunozg         ###   ########.fr       */
+/*   Updated: 2024/03/07 09:13:12 by cmunoz-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,6 @@ void	check_map(t_map *map)
 		error("The map has no items");
 	if (check_rectangular(map))
 		error("The map is not rectangular");
-	if ((map->rows * 64) > 2880 || (map->cols * 64) > 5120)
-		error("The map is bigger than the screen");
 	if (check_walls(*map))
 		error("The map is not enclosed");
 	check_path(map);
