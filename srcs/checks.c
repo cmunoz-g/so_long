@@ -6,7 +6,7 @@
 /*   By: cmunoz-g <cmunoz-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:41:16 by cmunoz-g          #+#    #+#             */
-/*   Updated: 2024/03/05 19:28:17 by cmunoz-g         ###   ########.fr       */
+/*   Updated: 2024/03/13 12:25:09 by cmunoz-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,22 +53,23 @@ int	check_positions(t_map *map)
 {
 	static int	i = 0;
 	static int	j = 0;
-	static int	count = 0;
+	static int	count_p = 0;
+	static int	count_e = 0;
 
 	while (map->parsed[i])
 	{
 		while (map->parsed[i][j])
 		{
 			if (map->parsed[i][j] == 'P')
-				get_start_pos(map, i, j, &count);
+				get_start_pos(map, i, j, &count_p);
 			else if (map->parsed[i][j] == 'E')
-				get_exit_pos(map, i, j, &count);
+				get_exit_pos(map, i, j, &count_e);
 			j++;
 		}
 		j = 0;
 		i++;
 	}
-	if (count == 2 && map->start_pos.x && map->exit_pos.x)
+	if (count_e && count_p && map->start_pos.x && map->exit_pos.x)
 		return (0);
 	else
 		return (1);
