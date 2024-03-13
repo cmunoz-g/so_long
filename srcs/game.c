@@ -6,7 +6,7 @@
 /*   By: cmunoz-g <cmunoz-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:52:05 by cmunoz-g          #+#    #+#             */
-/*   Updated: 2024/03/07 09:01:44 by cmunoz-g         ###   ########.fr       */
+/*   Updated: 2024/03/13 12:29:50 by cmunoz-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	init_player(t_data *data)
 
 int	keypress(int keysym, t_data *data)
 {
-	print_movements(*data);
+	print_movements(*data); // pensar si mover esto solo para desplazamientos
 	if (keysym == 13 || keysym == 126)
 	{
 		data->player.last_move = 'u';
