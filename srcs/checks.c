@@ -6,7 +6,7 @@
 /*   By: cmunoz-g <cmunoz-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:41:16 by cmunoz-g          #+#    #+#             */
-/*   Updated: 2024/03/13 12:25:09 by cmunoz-g         ###   ########.fr       */
+/*   Updated: 2024/03/13 12:28:28 by cmunoz-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	check_positions(t_map *map)
 		j = 0;
 		i++;
 	}
-	if (count_e && count_p && map->start_pos.x && map->exit_pos.x)
+	if (count_e == 1 && count_p == 1)
 		return (0);
 	else
 		return (1);
