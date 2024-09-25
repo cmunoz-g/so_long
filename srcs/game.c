@@ -6,7 +6,7 @@
 /*   By: cmunoz-g <cmunoz-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:52:05 by cmunoz-g          #+#    #+#             */
-/*   Updated: 2024/03/13 12:29:50 by cmunoz-g         ###   ########.fr       */
+/*   Updated: 2024/09/25 10:02:57 by cmunoz-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,28 +41,28 @@ void	init_player(t_data *data)
 
 int	keypress(int keysym, t_data *data)
 {
-	print_movements(*data); // pensar si mover esto solo para desplazamientos
-	if (keysym == 13 || keysym == 126)
+	print_movements(*data);
+	if (keysym == 119)
 	{
 		data->player.last_move = 'u';
 		up(data);
 	}
-	else if (keysym == 1 || keysym == 125)
+	else if (keysym == 115)
 	{
 		data->player.last_move = 'd';
 		down(data);
 	}
-	else if (keysym == 0 || keysym == 123)
+	else if (keysym == 97)
 	{
 		data->player.last_move = 'l';
 		left(data);
 	}
-	else if (keysym == 2 || keysym == 124)
+	else if (keysym == 100)
 	{
 		data->player.last_move = 'r';
 		right(data);
 	}
-	else if (keysym == 53)
+	else if (keysym == 65307)
 		destroy(data);
 	print_textures(*data);
 	return (0);

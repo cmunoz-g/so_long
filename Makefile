@@ -1,39 +1,39 @@
 NAME = so_long
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Wextra -Werror 
 LDFLAGS = -fsanitize=address
 INCLUDE = inc/
 FOLDER = srcs/
+LIBFT = libft
 OBJFOLDER = obj/
 SRCS = main.c checks.c get_next_line.c get_next_line_utils.c map.c bfs.c utils.c textures.c game.c moves.c checks_aux.c memory.c
 OBJS = $(SRCS:%.c=$(OBJFOLDER)%.o)
-LIBFT = libft
 
-MINILIBX = minilibx/libmlx.a 
-PATHMINILIBX = minilibx/
-MLX_FLAGS = -L$(PATHMINILIBX) -Imlx -framework OpenGL -framework AppKit
+MLX = minilibx-linux-master/libmlx_Linux.a
+PATHMLX = minilibx-linux-master/
+MLX_FLAGS = -L$(PATHMLX) -lXext -lX11 -Imlx_linux
 
 $(OBJFOLDER)%.o: $(FOLDER)%.c 
 	@mkdir -p $(OBJFOLDER)
-	$(CC) $(CFLAGS) -I$(INCLUDE) -I$(PATHMINILIBX) -I$(LIBFT)/libft.a -c $< -o $@
+	$(CC) $(CFLAGS) -I$(INCLUDE) -I$(LIBFT) -I$(PATHMLX) -c $< -o $@
 
-$(NAME): $(OBJS)
-	@make -C $(PATHMINILIBX)
+$(NAME): $(OBJS) 
 	@make -C $(LIBFT)
-	$(CC) -o $(NAME) $(OBJS) $(MINILIBX) $(MLX_FLAGS) $(LDFLAGS) $(LIBFT)/libft.a
+	@make -C $(PATHMLX)
+	$(CC) -o $(NAME) $(OBJS) $(LIBFT)/libft.a $(MLX) $(MLX_FLAGS) $(LDFLAGS)
 
 all: $(NAME)
 
 clean:
-	@make clean -C $(PATHMINILIBX)
-	@make clean -C $(LIBFT)
 	@rm -rf $(OBJFOLDER)
+	@make clean -C $(PATHMLX)
+	@make clean -C $(LIBFT)
 
 fclean: clean
-	@rm -f $(MINILIBX)
-	@make fclean -C $(LIBFT)
+	@rm -f $(MLX)
 	@rm -f $(NAME)
+	@make fclean -C $(LIBFT)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re 
